@@ -9,13 +9,16 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/user', function (Request $request) {
 //     return $request->user();
 // })->middleware('auth:sanctum');
-
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 
-Route::get('tasks/{id}', [TaskController::class, 'index']);
-Route::post('tasks', [TaskController::class, 'store']);
-Route::post('tasks/{id}', [TaskController::class, 'update']);
-Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
-
-Route::get('/tags', [TagController::class, 'index']);
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('tasks/{id}', [TaskController::class, 'index']);
+    Route::post('tasks', [TaskController::class, 'store']);
+    Route::post('tasks/{id}', [TaskController::class, 'update']);
+    Route::delete('tasks/{id}', [TaskController::class, 'destroy']);
+    
+    Route::get('/tags', [TagController::class, 'index']);
+    
+    Route::post('/logout', [AuthController::class, 'logout']);
+});
