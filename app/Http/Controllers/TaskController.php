@@ -12,7 +12,7 @@ class TaskController extends Controller
 {
     public function index($id)
     {
-        $data = TaskModel::with('taskTags')->where('user_id', $id)->get();
+        $data = TaskModel::with('taskTags', 'taskTags.tag')->where('user_id', $id)->get();
 
         return response()->json([
             'status_code' => 200,
