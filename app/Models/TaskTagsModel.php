@@ -10,7 +10,7 @@ class TaskTagsModel extends Model
 {
     use HasFactory, Notifiable;
 
-    protected $table = 'users';
+    protected $table = 'task_tags';
     protected $fillable = [
         'task_id',
         'tag_id',

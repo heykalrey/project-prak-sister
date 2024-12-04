@@ -17,7 +17,6 @@ return new class extends Migration
             $table->foreignId('tag_id')->constrained('tags')->onDelete('cascade');
             $table->foreignId('assigned_by')->constrained('users')->onDelete('cascade');
             $table->timestamp('assigned_at')->useCurrent();
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

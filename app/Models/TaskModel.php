@@ -26,7 +26,7 @@ class TaskModel extends Model
 
     public function taskTags()
     {
-        return $this->hasMany(TaskTagsModel::class);
+        return $this->hasMany(TaskTagsModel::class, 'task_id');
     }
 
     public function user()
